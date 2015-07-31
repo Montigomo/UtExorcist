@@ -1,0 +1,35 @@
+﻿<Window x:Name="wndMain" x:Class="utexorcist.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:utexorcist"
+        mc:Ignorable="d"
+        Title="UtExorcist" Height="390" Width="381" FontFamily="Verdana" Icon="Icons/devil.ico">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="11*"/>
+      <RowDefinition Height="2*"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+    <Button x:Name="buttonStart" Content="Apply" HorizontalAlignment="Center" 
+                Margin="0" VerticalAlignment="Center" Width="75" Grid.Row="1" Height="20" Click="buttonStart_Click"/>
+    <ListView x:Name="listView" Margin="0"  ItemsSource="{DynamicResource Drinks}">
+      <ListView.View>
+        <GridView>
+          <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+          <GridViewColumn Header="Value">
+            <GridViewColumn.CellTemplate>
+              <DataTemplate>
+                <CheckBox Tag="{Binding Value}" IsChecked="{Binding Value, Mode=TwoWay}" />
+              </DataTemplate>
+            </GridViewColumn.CellTemplate>
+          </GridViewColumn>
+        </GridView>
+      </ListView.View>
+    </ListView>
+
+  </Grid>
+</Window>
