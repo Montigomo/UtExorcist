@@ -30,10 +30,6 @@ namespace utexorcist
 
 		private static string[] _userAgents = {
 			// ******* Internet Explorer *******
-			//@"Microsoft Internet Explorer/4.0b1 (Windows 95)",
-			//@"Microsoft Internet Explorer/4.0b1 (Windows 95)",
-			//@"Mozilla/2.0 (compatible; MSIE 3.01; Windows 98)",
-			//@"Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.0)",
 			@"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
 			@"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727)",
 			@"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; SV1; .NET CLR 1.1.4322)",
@@ -99,8 +95,6 @@ namespace utexorcist
 
 			HttpWebResponse RawResponse = null;
 
-			//try
-			//{
 			if (rt == Method.POST && requestParams != null)
 			{
 				encoding = encoding ?? Encoding.Default;
@@ -126,17 +120,6 @@ namespace utexorcist
 				{
 					responseData = _sr.ReadToEnd();
 				}
-			//}
-			//catch (System.Exception ex)
-			//{
-			//  System.Diagnostics.Debug.WriteLine(ex.Message);
-			//}
-			//finally
-			//{
-			//  if(RawResponse != null)
-			//    RawResponse.Close();
-			//}
-
 			return responseData;
 		}
 
