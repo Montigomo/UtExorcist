@@ -16,6 +16,9 @@ namespace utexorcist
 	/// </summary>
 	public partial class App : Application
 	{
+		static public readonly string Version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+		static public readonly string AppTitle = "UtExorcist  - " + Version;
+
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			base.OnStartup(e);

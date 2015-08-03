@@ -131,6 +131,8 @@ namespace utexorcist
 			{
 				string hr = String.Empty;
 				UteConnect _connect = Connect();
+				var ser = new JavaScriptSerializer();
+
 				foreach (var item in Values)
 				{
 					hr = HttpExtensions.CreateCommonRequest(UriBuilder(Endpoin.Api,
@@ -143,6 +145,7 @@ namespace utexorcist
 						{ "hostname",  _hostName },
 							//{ "callback", _callback }
 						})).Get();
+					var btvalue = ser.Deserialize<UtResponseReadValue>(hr);
 				}
 			});
 		}
@@ -168,8 +171,13 @@ namespace utexorcist
 							//{ "callback", _callback }
 						})).Get();
 					var btvalue = ser.Deserialize<UtResponseReadValue>(hr);
+					var _get = btvalue.btapp.settings.get;
 					var value = false;
-					if (bool.TryParse(btvalue.btapp.settings.get, out value))
+					if (_get.StartsWith("Unknown property"))
+					{
+						item.IsValid = false;
+					}
+					else if (bool.TryParse(_get, out value))
 					{
 						Console.WriteLine(item.Name + "  " + value);
 						item.Value = value;
@@ -262,7 +270,7 @@ namespace utexorcist
 		//  },
 		// "session": "9124"
 		//}
-
+		// { "btapp": { "settings": { "set": "success" } }, "session": "10459" }
 		internal class UtResponseReadValue
 		{
 			public UtResponseSettings btapp;
@@ -277,6 +285,7 @@ namespace utexorcist
 		internal class UtResponseSettingsValuePair
 		{
 			public string get;
+			public string set;
 		}
 
 		#pragma warning restore 0649
@@ -324,7 +333,8 @@ namespace utexorcist
 			}
 		}
 
-		private bool _isValid;
+		private bool _isValid = true;
+
 		[XmlIgnore]
 		public bool IsValid
 		{

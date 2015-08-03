@@ -102,7 +102,8 @@ namespace utexorcist
 
 		private void wndMain_Loaded(object sender, RoutedEventArgs e)
 		{
-			//CheckUtorrent();
+			this.Title = App.AppTitle;
+			CheckUtorrent();
 		}
 
 		
