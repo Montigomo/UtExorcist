@@ -5,37 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:utexorcist"
         mc:Ignorable="d"
-        Title="UtExorcist" Height="390" Width="381" FontFamily="Verdana" Icon="Icons/devil.ico" Loaded="wndMain_Loaded" SourceInitialized="wndMain_SourceInitialized" Closing="wndMain_Closing">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="11*"/>
-      <RowDefinition Height="2*"/>
-    </Grid.RowDefinitions>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition/>
-    </Grid.ColumnDefinitions>
-    <Button x:Name="buttonWrite" Content="Apply" HorizontalAlignment="Center" 
-                Margin="0" VerticalAlignment="Center" Width="75" Grid.Row="1" Height="20" Click="buttonWrite_Click"/>
-    <Button x:Name="buttonRead" Content="Read" HorizontalAlignment="Right" Margin="0,0,5,3" Grid.Row="1" VerticalAlignment="Bottom" Width="46" Click="buttonRead_Click"/>
-		
-    <DataGrid x:Name="dataGrid" ItemsSource="{DynamicResource Drinks}" Grid.Row="0" Margin="5,3" AutoGenerateColumns="False">
-      <DataGrid.RowStyle>
-        <Style TargetType="DataGridRow">
-          <Style.Triggers>
-            <DataTrigger Binding="{Binding IsValid}" Value="false">
-              <Setter Property="Background" Value="#FFFFDCDC"></Setter>
-            </DataTrigger>
-            <DataTrigger Binding="{Binding IsValid}" Value="true">
-              <Setter Property="Background" Value="#FFE0FFE0"></Setter>
-            </DataTrigger>
-          </Style.Triggers>
-        </Style>
-      </DataGrid.RowStyle>
-      <DataGrid.Columns>
-        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-        <DataGridCheckBoxColumn Header="Value" Binding="{Binding Value}"/>
-      </DataGrid.Columns>
-    </DataGrid>
+        Title="UtExorcist" Height="405.001" Width="376.313" FontFamily="Verdana" Icon="Icons/devil.ico" Loaded="wndMain_Loaded" SourceInitialized="wndMain_SourceInitialized" Closing="wndMain_Closing" ResizeMode="NoResize" WindowStyle="ToolWindow">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="11*"/>
+			<RowDefinition Height="2*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<DataGrid x:Name="dataGrid" ItemsSource="{DynamicResource Drinks}" Grid.Row="0" Margin="5,3" AutoGenerateColumns="False">
+			<DataGrid.RowStyle>
+				<Style TargetType="DataGridRow">
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding IsValid}" Value="false">
+							<Setter Property="Background" Value="#FFFFDCDC"></Setter>
+						</DataTrigger>
+						<DataTrigger Binding="{Binding IsValid}" Value="true">
+							<Setter Property="Background" Value="#FFE0FFE0"></Setter>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</DataGrid.RowStyle>
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+				<DataGridCheckBoxColumn Header="Value" Binding="{Binding Value}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+		<Button x:Name="buttonWrite" Content="Write"    Margin="76,10,204,18" Grid.Row="1" Click="buttonWrite_Click"/>
+		<Button x:Name="buttonRead" Content="Read"  Margin="207,10,73,18" Grid.Row="1" Click="buttonRead_Click"/>
+	</Grid>
 
-  </Grid>
 </Window>

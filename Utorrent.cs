@@ -43,12 +43,17 @@ namespace utexorcist
 		#endregion
 
 		private static Uri _uri = new Uri("http://localhost");
+
 		private static int _port = 10000;
+
 		//private static string _callback = "Callback";
+
 		private static string _appName = "UtExorsist";
+
 		private static string _hostName = "google.com";
 
 		internal static UtVersion Version { get; set; }
+
 		internal static bool IsConnected { get; set; }
 
 		static Utorrent()
@@ -71,6 +76,7 @@ namespace utexorcist
 					IsConnected = false;
 			}
 		}
+
 		internal static Task InitializeTask()
 		{
 			return Task.Run(() =>
@@ -85,6 +91,8 @@ namespace utexorcist
 			string hr = HttpExtensions.CreateCommonRequest(UriBuilder(Endpoin.Version)).Get();
 			return ser.Deserialize<UtVersion>(hr);
 		}
+
+		#region Connect
 
 		private static UteConnect Connect()
 		{
@@ -125,6 +133,10 @@ namespace utexorcist
 			return _session;
 		}
 
+		#endregion
+
+		#region WriteValues
+
 		internal static Task WriteValues()
 		{
 			return Task.Run(() =>
@@ -149,6 +161,10 @@ namespace utexorcist
 				}
 			});
 		}
+
+		#endregion
+		
+		#region ReadValues
 
 		internal static Task ReadValues()
 		{
@@ -185,6 +201,8 @@ namespace utexorcist
 				}
 			});
 		}
+
+		#endregion
 
 		#region  Helper methods
 

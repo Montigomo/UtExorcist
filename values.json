@@ -1,0 +1,2 @@
+
+{ "name": "uTorrent", "version": { "device_id": "client", "engine_version": 40760, "features": { "device_pairing": { "jsonp": 1, "supported_types": [ 0, 1, 2 ] }, "remote": 1, "settings_set": 1 }, "major_version": 3, "minor_version": 4, "name": "uTorrent", "peer_id": "UT3430", "product_code": "PRODUCT_CODE", "tiny_version": 3, "ui_version": 40760, "user_agent": "uTorrent\/3430(40760)(USER_AGENT_PRODUCT_CODE)", "version_date": "2012-12-04 23:04:37 -0800" } } 
